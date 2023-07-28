@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 #displays Best School 10 times with Hi in line 10
-c=1
-while [ $c -lt 11 ]
+c=0
+while [ $c -lt 10 ]
 do
     if [ $c -eq 9 ]
     then
         echo "Hi"
     fi
-        echo "Best School"
-        ((c++))
+    echo "Best School"
+    ((c++))
 done
