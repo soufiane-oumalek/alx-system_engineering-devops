@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#displays numbers from 1 to 20 and:
+#displays 4 and then bad luck from China 4th loop 
+#displays 9 and then bad luck from Japan 9th loop 
+#displays 17 and then bad luck from Italy 17th loop
+idx=1
+while [ $idx -le 20 ]
+do
+    case "$idx" in
+        4)
+            echo $idx
+            echo "bad luck from China"
+        ;;
+        9)
+            echo $idx
+            echo "bad luck from Japan"
+        ;;
+        17)
+            echo $idx 
+            echo "bad luck from Italy"
+        ;;
+        *)
+        echo "$idx"
+    esac
+        ((idx++))
+done
