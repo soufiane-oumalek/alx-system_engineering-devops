@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 #configures a server to the above requirements
-
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
