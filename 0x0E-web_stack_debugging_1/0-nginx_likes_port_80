@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #configures a server to the above requirements
-0x0E-web_stack_debugging_1/0-nginx_likes_port_80
+rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 #restart server
 sudo service nginx restart
