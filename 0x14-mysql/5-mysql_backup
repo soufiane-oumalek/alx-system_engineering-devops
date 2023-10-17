@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#script accepts one argument that is the password used to connect to the MySQL database
+mysqldump -uroot -p"$1" --all-databases > backup.sql
+tar -czvf $"(date + %d-%m-%Y).tar.gz" backup.sql
+
