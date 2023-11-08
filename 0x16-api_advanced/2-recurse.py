@@ -12,24 +12,20 @@ def get_reddit_posts(subreddit, after=None):
     response = requests.get(url, params=params, headers=user_agent,
                             allow_redirects=False)
 
-    if response.status_code == 200:
-        data = response.json().get("data")
-        after_data = data.get("after")
-        children = data.get("children")
-
-        if not after_data:
-            return [post["data"]["title"] for post in children]
-        else:
-            return [post["data"]["title"] for post in children] + \
-                   get_reddit_posts(subreddit, after=after_data)
-    else:
+    if response.status_code != 200:
         return None
+
+    data = response.json().get("data")
+    after_data = data.get("after")
+    children = data.get("children")
+
+    post_titles = [post["data"]["title"] for post in children]
+
+    if not after_data:
+        return post_titles
+    else:
+        return post_titles + get_reddit_posts(subreddit, after=after_data)
 
 
 def recurse(subreddit):
-    posts = get_reddit_posts(subreddit)
-
-    if posts:
-        return posts
-    else:
-        return None
+    return get_reddit_posts(subreddit)
